@@ -2,5 +2,5 @@
 
 #### Nøkkelord: 
 - Mikrokontrollere
-– A/D, PWM, timing
-– Kommunikasjonsbusser
+- A/D, PWM, timing
+- Kommunikasjonsbusser
