@@ -1,0 +1,664 @@
+
+Lab_10.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000156  00800100  00000334  000003a8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000334  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000004fe  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000530  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000c0  00000000  00000000  00000570  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000f78  00000000  00000000  00000630  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000090a  00000000  00000000  000015a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000007c6  00000000  00000000  00001eb2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000001bc  00000000  00000000  00002678  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000528  00000000  00000000  00002834  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000007c5  00000000  00000000  00002d5c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000090  00000000  00000000  00003521  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	12 e0       	ldi	r17, 0x02	; 2
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e4 e3       	ldi	r30, 0x34	; 52
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a6 35       	cpi	r26, 0x56	; 86
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 4b 00 	call	0x96	; 0x96 <main>
+  8e:	0c 94 98 01 	jmp	0x330	; 0x330 <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <main>:
+int main(void) {
+  uint16_t timerValue;
+
+  // -------- Inits --------- //
+
+  initUSART();
+  96:	0e 94 61 01 	call	0x2c2	; 0x2c2 <initUSART>
+#include "support.h"
+
+
+static inline void initTimer1(void) {
+
+  TCCR1B |= (1 << CS12) | (1 << CS10);
+  9a:	e1 e8       	ldi	r30, 0x81	; 129
+  9c:	f0 e0       	ldi	r31, 0x00	; 0
+  9e:	80 81       	ld	r24, Z
+  a0:	85 60       	ori	r24, 0x05	; 5
+  a2:	80 83       	st	Z, r24
+  
+  /* Clock speed: 1 MHz / 1024*/
+  TCCR1B |= (1<<ICES1);   // get rising edge first
+  a4:	80 81       	ld	r24, Z
+  a6:	80 64       	ori	r24, 0x40	; 64
+  a8:	80 83       	st	Z, r24
+
+  TIFR1 |= (1<<ICF1); /*Time interrupt flag register / Time input capture flag*/
+  aa:	b5 9a       	sbi	0x16, 5	; 22
+  TIMSK1 |= (1<<ICIE1); /*Timer/counter interrupt mask register / Timer1, ICI enabled */
+  ac:	ef e6       	ldi	r30, 0x6F	; 111
+  ae:	f0 e0       	ldi	r31, 0x00	; 0
+  b0:	80 81       	ld	r24, Z
+  b2:	80 62       	ori	r24, 0x20	; 32
+  b4:	80 83       	st	Z, r24
+
+  // -------- Inits --------- //
+
+  initUSART();
+  initTimer1();
+  LED_DDR = 0xff;                               /* all LEDs for output */
+  b6:	8f ef       	ldi	r24, 0xFF	; 255
+  b8:	84 b9       	out	0x04, r24	; 4
+  BUTTON_PORT |= (1 << BUTTON);             /* enable internal pull-up */
+  ba:	5a 9a       	sbi	0x0b, 2	; 11
+  
+  printString(ICIE1);
+  bc:	85 e0       	ldi	r24, 0x05	; 5
+  be:	90 e0       	ldi	r25, 0x00	; 0
+  c0:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+  printString("\r\nReaction Timer:\r\n");
+  c4:	80 e0       	ldi	r24, 0x00	; 0
+  c6:	91 e0       	ldi	r25, 0x01	; 1
+  c8:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+  printString("---------------\r\n");
+  cc:	84 e1       	ldi	r24, 0x14	; 20
+  ce:	91 e0       	ldi	r25, 0x01	; 1
+  d0:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+  printString("Press any key to start.\r\n");
+  d4:	86 e2       	ldi	r24, 0x26	; 38
+  d6:	91 e0       	ldi	r25, 0x01	; 1
+  d8:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+  printString(ICR1);
+  dc:	80 91 86 00 	lds	r24, 0x0086	; 0x800086 <__DATA_REGION_ORIGIN__+0x26>
+  e0:	90 91 87 00 	lds	r25, 0x0087	; 0x800087 <__DATA_REGION_ORIGIN__+0x27>
+  e4:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+  while (1) {
+
+    receiveByte();                                    /* press any key */
+    printString("\r\nGet ready...");
+    randomDelay();
+  printString(ICR1);
+  e8:	06 e8       	ldi	r16, 0x86	; 134
+  ea:	10 e0       	ldi	r17, 0x00	; 0
+
+    printString("\r\nGo!\r\n");
+	  printString(ICR1);
+
+    LED_PORT = 0xff;                                     /* light LEDs */
+  ec:	dd 24       	eor	r13, r13
+  ee:	da 94       	dec	r13
+    TCNT1 = 0;                                        /* reset counter */
+  f0:	0f 2e       	mov	r0, r31
+  f2:	f4 e8       	ldi	r31, 0x84	; 132
+  f4:	ef 2e       	mov	r14, r31
+  f6:	f1 2c       	mov	r15, r1
+  f8:	f0 2d       	mov	r31, r0
+  printString(ICR1);
+
+  // ------ Event loop ------ //
+  while (1) {
+
+    receiveByte();                                    /* press any key */
+  fa:	0e 94 7a 01 	call	0x2f4	; 0x2f4 <receiveByte>
+    printString("\r\nGet ready...");
+  fe:	80 e4       	ldi	r24, 0x40	; 64
+ 100:	91 e0       	ldi	r25, 0x01	; 1
+ 102:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+    randomDelay();
+ 106:	0e 94 49 01 	call	0x292	; 0x292 <randomDelay>
+  printString(ICR1);
+ 10a:	f8 01       	movw	r30, r16
+ 10c:	80 81       	ld	r24, Z
+ 10e:	91 81       	ldd	r25, Z+1	; 0x01
+ 110:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+
+    printString("\r\nGo!\r\n");
+ 114:	8f e4       	ldi	r24, 0x4F	; 79
+ 116:	91 e0       	ldi	r25, 0x01	; 1
+ 118:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+	  printString(ICR1);
+ 11c:	f8 01       	movw	r30, r16
+ 11e:	80 81       	ld	r24, Z
+ 120:	91 81       	ldd	r25, Z+1	; 0x01
+ 122:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+
+    LED_PORT = 0xff;                                     /* light LEDs */
+ 126:	d5 b8       	out	0x05, r13	; 5
+    TCNT1 = 0;                                        /* reset counter */
+ 128:	f7 01       	movw	r30, r14
+ 12a:	11 82       	std	Z+1, r1	; 0x01
+ 12c:	10 82       	st	Z, r1
+
+    if (bit_is_clear(BUTTON_PIN, BUTTON)) {
+ 12e:	4a 99       	sbic	0x09, 2	; 9
+ 130:	0a c0       	rjmp	.+20     	; 0x146 <main+0xb0>
+            /* Button pressed _exactly_ as LEDs light up.  Suspicious. */
+      printString("You're only cheating yourself.\r\n");
+ 132:	87 e5       	ldi	r24, 0x57	; 87
+ 134:	91 e0       	ldi	r25, 0x01	; 1
+ 136:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+	  printString(ICR1);
+ 13a:	f8 01       	movw	r30, r16
+ 13c:	80 81       	ld	r24, Z
+ 13e:	91 81       	ldd	r25, Z+1	; 0x01
+ 140:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+ 144:	11 c0       	rjmp	.+34     	; 0x168 <main+0xd2>
+    }
+    else {
+      // Wait until button pressed, save timer value.
+      loop_until_bit_is_clear(BUTTON_PIN, BUTTON);
+ 146:	4a 99       	sbic	0x09, 2	; 9
+ 148:	fe cf       	rjmp	.-4      	; 0x146 <main+0xb0>
+      timerValue = TCNT1 >> 4;
+ 14a:	f7 01       	movw	r30, r14
+ 14c:	c0 81       	ld	r28, Z
+ 14e:	d1 81       	ldd	r29, Z+1	; 0x01
+ 150:	d2 95       	swap	r29
+ 152:	c2 95       	swap	r28
+ 154:	cf 70       	andi	r28, 0x0F	; 15
+ 156:	cd 27       	eor	r28, r29
+ 158:	df 70       	andi	r29, 0x0F	; 15
+ 15a:	cd 27       	eor	r28, r29
+      /* each tick is approx 1/16 milliseconds, so we bit-shift divide */
+
+      printMilliseconds(timerValue);
+ 15c:	ce 01       	movw	r24, r28
+ 15e:	0e 94 ba 00 	call	0x174	; 0x174 <printMilliseconds>
+      printComments(timerValue);
+ 162:	ce 01       	movw	r24, r28
+ 164:	0e 94 11 01 	call	0x222	; 0x222 <printComments>
+    }
+
+    // Clear LEDs and start again.
+    LED_PORT = 0x00;
+ 168:	15 b8       	out	0x05, r1	; 5
+    printString("Press any key to try again.\r\n");
+ 16a:	88 e7       	ldi	r24, 0x78	; 120
+ 16c:	91 e0       	ldi	r25, 0x01	; 1
+ 16e:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+
+  }                                                  /* End event loop */
+ 172:	c3 cf       	rjmp	.-122    	; 0xfa <main+0x64>
+
+00000174 <printMilliseconds>:
+
+#include "support.h"
+
+void printMilliseconds(uint16_t value) {
+ 174:	cf 93       	push	r28
+ 176:	df 93       	push	r29
+ 178:	ec 01       	movw	r28, r24
+     you took over the serial port.  Does ascii conversion, prints
+     decimal point, and drops extra leading zeros.
+   */
+  uint8_t digit;
+
+  printString("\r\nYou took ");
+ 17a:	86 e9       	ldi	r24, 0x96	; 150
+ 17c:	91 e0       	ldi	r25, 0x01	; 1
+ 17e:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+                                               /* add up ten-thousands */
+  digit = 0;
+  while (value >= 10000) {
+ 182:	c0 31       	cpi	r28, 0x10	; 16
+ 184:	27 e2       	ldi	r18, 0x27	; 39
+ 186:	d2 07       	cpc	r29, r18
+ 188:	80 f0       	brcs	.+32     	; 0x1aa <printMilliseconds+0x36>
+ 18a:	80 e0       	ldi	r24, 0x00	; 0
+ 18c:	01 c0       	rjmp	.+2      	; 0x190 <printMilliseconds+0x1c>
+    digit++;
+ 18e:	89 2f       	mov	r24, r25
+ 190:	91 e0       	ldi	r25, 0x01	; 1
+ 192:	98 0f       	add	r25, r24
+    value -= 10000;
+ 194:	c0 51       	subi	r28, 0x10	; 16
+ 196:	d7 42       	sbci	r29, 0x27	; 39
+  uint8_t digit;
+
+  printString("\r\nYou took ");
+                                               /* add up ten-thousands */
+  digit = 0;
+  while (value >= 10000) {
+ 198:	c0 31       	cpi	r28, 0x10	; 16
+ 19a:	27 e2       	ldi	r18, 0x27	; 39
+ 19c:	d2 07       	cpc	r29, r18
+ 19e:	b8 f7       	brcc	.-18     	; 0x18e <printMilliseconds+0x1a>
+    digit++;
+    value -= 10000;
+  }
+  if (digit) {
+ 1a0:	99 23       	and	r25, r25
+ 1a2:	19 f0       	breq	.+6      	; 0x1aa <printMilliseconds+0x36>
+    transmitByte('0' + digit);
+ 1a4:	8f 5c       	subi	r24, 0xCF	; 207
+ 1a6:	0e 94 72 01 	call	0x2e4	; 0x2e4 <transmitByte>
+  }
+                                                   /* add up thousands */
+  digit = 0;
+  while (value >= 1000) {
+ 1aa:	c8 3e       	cpi	r28, 0xE8	; 232
+ 1ac:	83 e0       	ldi	r24, 0x03	; 3
+ 1ae:	d8 07       	cpc	r29, r24
+ 1b0:	48 f0       	brcs	.+18     	; 0x1c4 <printMilliseconds+0x50>
+ 1b2:	80 e0       	ldi	r24, 0x00	; 0
+    digit++;
+ 1b4:	8f 5f       	subi	r24, 0xFF	; 255
+    value -= 1000;
+ 1b6:	c8 5e       	subi	r28, 0xE8	; 232
+ 1b8:	d3 40       	sbci	r29, 0x03	; 3
+  if (digit) {
+    transmitByte('0' + digit);
+  }
+                                                   /* add up thousands */
+  digit = 0;
+  while (value >= 1000) {
+ 1ba:	c8 3e       	cpi	r28, 0xE8	; 232
+ 1bc:	93 e0       	ldi	r25, 0x03	; 3
+ 1be:	d9 07       	cpc	r29, r25
+ 1c0:	c8 f7       	brcc	.-14     	; 0x1b4 <printMilliseconds+0x40>
+ 1c2:	01 c0       	rjmp	.+2      	; 0x1c6 <printMilliseconds+0x52>
+  }
+  if (digit) {
+    transmitByte('0' + digit);
+  }
+                                                   /* add up thousands */
+  digit = 0;
+ 1c4:	80 e0       	ldi	r24, 0x00	; 0
+  while (value >= 1000) {
+    digit++;
+    value -= 1000;
+  }
+  transmitByte('0' + digit);
+ 1c6:	80 5d       	subi	r24, 0xD0	; 208
+ 1c8:	0e 94 72 01 	call	0x2e4	; 0x2e4 <transmitByte>
+
+                            /* decimal point here b/c dividing by 1000 */
+  transmitByte('.');
+ 1cc:	8e e2       	ldi	r24, 0x2E	; 46
+ 1ce:	0e 94 72 01 	call	0x2e4	; 0x2e4 <transmitByte>
+
+                                                    /* add up hundreds */
+  digit = 0;
+  while (value >= 100) {
+ 1d2:	c4 36       	cpi	r28, 0x64	; 100
+ 1d4:	d1 05       	cpc	r29, r1
+ 1d6:	40 f0       	brcs	.+16     	; 0x1e8 <printMilliseconds+0x74>
+ 1d8:	80 e0       	ldi	r24, 0x00	; 0
+    digit++;
+ 1da:	8f 5f       	subi	r24, 0xFF	; 255
+    value -= 100;
+ 1dc:	c4 56       	subi	r28, 0x64	; 100
+ 1de:	d1 09       	sbc	r29, r1
+                            /* decimal point here b/c dividing by 1000 */
+  transmitByte('.');
+
+                                                    /* add up hundreds */
+  digit = 0;
+  while (value >= 100) {
+ 1e0:	c4 36       	cpi	r28, 0x64	; 100
+ 1e2:	d1 05       	cpc	r29, r1
+ 1e4:	d0 f7       	brcc	.-12     	; 0x1da <printMilliseconds+0x66>
+ 1e6:	01 c0       	rjmp	.+2      	; 0x1ea <printMilliseconds+0x76>
+
+                            /* decimal point here b/c dividing by 1000 */
+  transmitByte('.');
+
+                                                    /* add up hundreds */
+  digit = 0;
+ 1e8:	80 e0       	ldi	r24, 0x00	; 0
+  while (value >= 100) {
+    digit++;
+    value -= 100;
+  }
+  transmitByte('0' + digit);
+ 1ea:	80 5d       	subi	r24, 0xD0	; 208
+ 1ec:	0e 94 72 01 	call	0x2e4	; 0x2e4 <transmitByte>
+                                                        /* add up tens */
+  digit = 0;
+  while (value >= 10) {
+ 1f0:	ca 30       	cpi	r28, 0x0A	; 10
+ 1f2:	d1 05       	cpc	r29, r1
+ 1f4:	38 f0       	brcs	.+14     	; 0x204 <printMilliseconds+0x90>
+ 1f6:	80 e0       	ldi	r24, 0x00	; 0
+    digit++;
+ 1f8:	8f 5f       	subi	r24, 0xFF	; 255
+    value -= 10;
+ 1fa:	2a 97       	sbiw	r28, 0x0a	; 10
+    value -= 100;
+  }
+  transmitByte('0' + digit);
+                                                        /* add up tens */
+  digit = 0;
+  while (value >= 10) {
+ 1fc:	ca 30       	cpi	r28, 0x0A	; 10
+ 1fe:	d1 05       	cpc	r29, r1
+ 200:	d8 f7       	brcc	.-10     	; 0x1f8 <printMilliseconds+0x84>
+ 202:	01 c0       	rjmp	.+2      	; 0x206 <printMilliseconds+0x92>
+    digit++;
+    value -= 100;
+  }
+  transmitByte('0' + digit);
+                                                        /* add up tens */
+  digit = 0;
+ 204:	80 e0       	ldi	r24, 0x00	; 0
+  while (value >= 10) {
+    digit++;
+    value -= 10;
+  }
+  transmitByte('0' + digit);
+ 206:	80 5d       	subi	r24, 0xD0	; 208
+ 208:	0e 94 72 01 	call	0x2e4	; 0x2e4 <transmitByte>
+
+  // Ones digit is easy.
+  transmitByte('0' + value);
+ 20c:	8c 2f       	mov	r24, r28
+ 20e:	80 5d       	subi	r24, 0xD0	; 208
+ 210:	0e 94 72 01 	call	0x2e4	; 0x2e4 <transmitByte>
+
+  printString(" seconds.\r\n");
+ 214:	82 ea       	ldi	r24, 0xA2	; 162
+ 216:	91 e0       	ldi	r25, 0x01	; 1
+ 218:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+}
+ 21c:	df 91       	pop	r29
+ 21e:	cf 91       	pop	r28
+ 220:	08 95       	ret
+
+00000222 <printComments>:
+
+void printComments(uint16_t value) {
+            /* Given a value in milliseconds, rates your reaction time */
+  if (value > 2000) {
+ 222:	81 3d       	cpi	r24, 0xD1	; 209
+ 224:	27 e0       	ldi	r18, 0x07	; 7
+ 226:	92 07       	cpc	r25, r18
+ 228:	28 f0       	brcs	.+10     	; 0x234 <printComments+0x12>
+    printString("---->  Ummm...this is a reaction timer...\r\n");
+ 22a:	8e ea       	ldi	r24, 0xAE	; 174
+ 22c:	91 e0       	ldi	r25, 0x01	; 1
+ 22e:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+ 232:	08 95       	ret
+  }
+  else if (value > 1000) {
+ 234:	89 3e       	cpi	r24, 0xE9	; 233
+ 236:	23 e0       	ldi	r18, 0x03	; 3
+ 238:	92 07       	cpc	r25, r18
+ 23a:	28 f0       	brcs	.+10     	; 0x246 <printComments+0x24>
+    printString("---->  Hello?\r\n");
+ 23c:	8a ed       	ldi	r24, 0xDA	; 218
+ 23e:	91 e0       	ldi	r25, 0x01	; 1
+ 240:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+ 244:	08 95       	ret
+  }
+  else if (value > 500) {
+ 246:	85 3f       	cpi	r24, 0xF5	; 245
+ 248:	21 e0       	ldi	r18, 0x01	; 1
+ 24a:	92 07       	cpc	r25, r18
+ 24c:	28 f0       	brcs	.+10     	; 0x258 <printComments+0x36>
+    printString("---->  Slow.\r\n");
+ 24e:	8a ee       	ldi	r24, 0xEA	; 234
+ 250:	91 e0       	ldi	r25, 0x01	; 1
+ 252:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+ 256:	08 95       	ret
+  }
+  else if (value > 250) {
+ 258:	8b 3f       	cpi	r24, 0xFB	; 251
+ 25a:	91 05       	cpc	r25, r1
+ 25c:	28 f0       	brcs	.+10     	; 0x268 <printComments+0x46>
+    printString("---->  Have another cup of coffee.\r\n");
+ 25e:	89 ef       	ldi	r24, 0xF9	; 249
+ 260:	91 e0       	ldi	r25, 0x01	; 1
+ 262:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+ 266:	08 95       	ret
+  }
+  else if (value > 200) {
+ 268:	89 3c       	cpi	r24, 0xC9	; 201
+ 26a:	91 05       	cpc	r25, r1
+ 26c:	28 f0       	brcs	.+10     	; 0x278 <printComments+0x56>
+    printString("---->  Respectable.\r\n");
+ 26e:	8e e1       	ldi	r24, 0x1E	; 30
+ 270:	92 e0       	ldi	r25, 0x02	; 2
+ 272:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+ 276:	08 95       	ret
+  }
+  else if (value >= 150) {
+ 278:	86 39       	cpi	r24, 0x96	; 150
+ 27a:	91 05       	cpc	r25, r1
+ 27c:	28 f0       	brcs	.+10     	; 0x288 <printComments+0x66>
+    printString("---->  Fast.\r\n");
+ 27e:	84 e3       	ldi	r24, 0x34	; 52
+ 280:	92 e0       	ldi	r25, 0x02	; 2
+ 282:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+ 286:	08 95       	ret
+  }
+  else if (value < 150) {
+    printString("---->  Amazing!\r\n");
+ 288:	83 e4       	ldi	r24, 0x43	; 67
+ 28a:	92 e0       	ldi	r25, 0x02	; 2
+ 28c:	0e 94 82 01 	call	0x304	; 0x304 <printString>
+ 290:	08 95       	ret
+
+00000292 <randomDelay>:
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 292:	2f ef       	ldi	r18, 0xFF	; 255
+ 294:	83 ed       	ldi	r24, 0xD3	; 211
+ 296:	90 e3       	ldi	r25, 0x30	; 48
+ 298:	21 50       	subi	r18, 0x01	; 1
+ 29a:	80 40       	sbci	r24, 0x00	; 0
+ 29c:	90 40       	sbci	r25, 0x00	; 0
+ 29e:	e1 f7       	brne	.-8      	; 0x298 <randomDelay+0x6>
+ 2a0:	00 c0       	rjmp	.+0      	; 0x2a2 <randomDelay+0x10>
+ 2a2:	00 00       	nop
+  /* It's not really random, but very hard to control --
+     like coin-flipping. */
+  uint8_t randomTime;
+
+  _delay_ms(1000);                              /* wait at least 1 sec */
+  randomTime = (uint8_t) TCNT1;
+ 2a4:	80 91 84 00 	lds	r24, 0x0084	; 0x800084 <__DATA_REGION_ORIGIN__+0x24>
+ 2a8:	90 91 85 00 	lds	r25, 0x0085	; 0x800085 <__DATA_REGION_ORIGIN__+0x25>
+  /* type-casting the 16-bit TCNT1 as an 8-bit number keeps
+     only the 8 least-significant (fastest-changing) bits  */
+  while (--randomTime) {
+ 2ac:	81 50       	subi	r24, 0x01	; 1
+ 2ae:	41 f0       	breq	.+16     	; 0x2c0 <randomDelay+0x2e>
+ 2b0:	ef e3       	ldi	r30, 0x3F	; 63
+ 2b2:	fc e9       	ldi	r31, 0x9C	; 156
+ 2b4:	31 97       	sbiw	r30, 0x01	; 1
+ 2b6:	f1 f7       	brne	.-4      	; 0x2b4 <randomDelay+0x22>
+ 2b8:	00 c0       	rjmp	.+0      	; 0x2ba <randomDelay+0x28>
+ 2ba:	00 00       	nop
+ 2bc:	81 50       	subi	r24, 0x01	; 1
+ 2be:	c1 f7       	brne	.-16     	; 0x2b0 <randomDelay+0x1e>
+ 2c0:	08 95       	ret
+
+000002c2 <initUSART>:
+#include <avr/io.h>
+#include "USART.h"
+#include <util/setbaud.h>
+
+void initUSART(void) {                                /* requires BAUD */
+  UBRR0H = UBRRH_VALUE;                        /* defined in setbaud.h */
+ 2c2:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__DATA_REGION_ORIGIN__+0x65>
+  UBRR0L = UBRRL_VALUE;
+ 2c6:	87 e6       	ldi	r24, 0x67	; 103
+ 2c8:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__DATA_REGION_ORIGIN__+0x64>
+#if USE_2X
+  UCSR0A |= (1 << U2X0);
+#else
+  UCSR0A &= ~(1 << U2X0);
+ 2cc:	e0 ec       	ldi	r30, 0xC0	; 192
+ 2ce:	f0 e0       	ldi	r31, 0x00	; 0
+ 2d0:	80 81       	ld	r24, Z
+ 2d2:	8d 7f       	andi	r24, 0xFD	; 253
+ 2d4:	80 83       	st	Z, r24
+#endif
+                                  /* Enable USART transmitter/receiver */
+  UCSR0B = (1 << TXEN0) | (1 << RXEN0);
+ 2d6:	88 e1       	ldi	r24, 0x18	; 24
+ 2d8:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__DATA_REGION_ORIGIN__+0x61>
+  UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);   /* 8 data bits, 1 stop bit */
+ 2dc:	86 e0       	ldi	r24, 0x06	; 6
+ 2de:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__DATA_REGION_ORIGIN__+0x62>
+ 2e2:	08 95       	ret
+
+000002e4 <transmitByte>:
+}
+
+
+void transmitByte(uint8_t data) {
+                                     /* Wait for empty transmit buffer */
+  loop_until_bit_is_set(UCSR0A, UDRE0);
+ 2e4:	e0 ec       	ldi	r30, 0xC0	; 192
+ 2e6:	f0 e0       	ldi	r31, 0x00	; 0
+ 2e8:	90 81       	ld	r25, Z
+ 2ea:	95 ff       	sbrs	r25, 5
+ 2ec:	fd cf       	rjmp	.-6      	; 0x2e8 <transmitByte+0x4>
+  UDR0 = data;                                            /* send data */
+ 2ee:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
+ 2f2:	08 95       	ret
+
+000002f4 <receiveByte>:
+}
+
+uint8_t receiveByte(void) {
+  loop_until_bit_is_set(UCSR0A, RXC0);       /* Wait for incoming data */
+ 2f4:	e0 ec       	ldi	r30, 0xC0	; 192
+ 2f6:	f0 e0       	ldi	r31, 0x00	; 0
+ 2f8:	80 81       	ld	r24, Z
+ 2fa:	88 23       	and	r24, r24
+ 2fc:	ec f7       	brge	.-6      	; 0x2f8 <receiveByte+0x4>
+  return UDR0;                                /* return register value */
+ 2fe:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
+}
+ 302:	08 95       	ret
+
+00000304 <printString>:
+
+
+                       /* Here are a bunch of useful printing commands */
+
+void printString(const char myString[]) {
+ 304:	0f 93       	push	r16
+ 306:	1f 93       	push	r17
+ 308:	cf 93       	push	r28
+ 30a:	fc 01       	movw	r30, r24
+  uint8_t i = 0;
+  while (myString[i]) {
+ 30c:	80 81       	ld	r24, Z
+ 30e:	88 23       	and	r24, r24
+ 310:	59 f0       	breq	.+22     	; 0x328 <printString+0x24>
+ 312:	8f 01       	movw	r16, r30
+ 314:	c0 e0       	ldi	r28, 0x00	; 0
+    transmitByte(myString[i]);
+ 316:	0e 94 72 01 	call	0x2e4	; 0x2e4 <transmitByte>
+    i++;
+ 31a:	cf 5f       	subi	r28, 0xFF	; 255
+
+                       /* Here are a bunch of useful printing commands */
+
+void printString(const char myString[]) {
+  uint8_t i = 0;
+  while (myString[i]) {
+ 31c:	f8 01       	movw	r30, r16
+ 31e:	ec 0f       	add	r30, r28
+ 320:	f1 1d       	adc	r31, r1
+ 322:	80 81       	ld	r24, Z
+ 324:	81 11       	cpse	r24, r1
+ 326:	f7 cf       	rjmp	.-18     	; 0x316 <printString+0x12>
+    transmitByte(myString[i]);
+    i++;
+  }
+}
+ 328:	cf 91       	pop	r28
+ 32a:	1f 91       	pop	r17
+ 32c:	0f 91       	pop	r16
+ 32e:	08 95       	ret
+
+00000330 <_exit>:
+ 330:	f8 94       	cli
+
+00000332 <__stop_program>:
+ 332:	ff cf       	rjmp	.-2      	; 0x332 <__stop_program>
